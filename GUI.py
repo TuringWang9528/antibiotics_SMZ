@@ -60,7 +60,6 @@ feature_ranges = {
     'O (%)': {"type": "numerical", "min": 4.12, "max": 57.7, "default": 20.996},
     'H (%)': {"type": "numerical", "min": 0.01, "max": 18.77, "default": 2.7},
     'N (%)': {"type": "numerical", "min": 0.0, "max": 5.35, "default": 1.263},
-    'pHpzc': {"type": "numerical", "min": 0.73, "max": 9.53, "default": 5.492},
     'Dosage (g/L)': {"type": "numerical", "min": 0.008, "max": 20.0, "default": 2.478},
     'Initial concentration (mg/L)': {"type": "numerical", "min": 0.05, "max": 389.971, "default": 41.887},
     'Temperature (K)': {"type": "numerical", "min": 278.0, "max": 313.15, "default": 297.792},
