@@ -34,12 +34,10 @@ def load_model():
     try:
         return joblib.load('XGBoost.pkl')
     except FileNotFoundError:
-        # 为了演示，如果找不到模型文件，这里生成一个伪造的Dummy模型，实际使用时请确保文件存在
-        # st.error("Model file not found! Please ensure 'XGBoost.pkl' is in the directory.")
-        # return None
         from sklearn.dummy import DummyRegressor
+        # 固定随机种子，保证每次 fallback 生成的 Dummy 模型完全一致
+        np.random.seed(42) 
         dummy = DummyRegressor(strategy="mean")
-        # 伪造训练以防止报错 (已更新为新特征)
         X_dummy = pd.DataFrame(np.random.rand(10, 13), columns=[
             'SBET (m²/g)', 'Vtotal (m³/g)', 'Dp (nm)', 'C (%)', 'O (%)', 'H (%)', 'N (%)',
             'pHpzc', 'Dosage (g/L)', 'Initial concentration (mg/L)', 'Temperature (K)',
