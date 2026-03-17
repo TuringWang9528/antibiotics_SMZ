@@ -62,7 +62,7 @@ feature_ranges = {
     'SMX concentration (mg/L)': {"type": "numerical", "min": 0.05, "max": 389.971, "default": 41.887},
     'Temperature (K)': {"type": "numerical", "min": 278.0, "max": 313.15, "default": 297.792},
     'Solution pH': {"type": "numerical", "min": 3.0, "max": 8.26, "default": 6.006},
-    'Adsorption Time(min)': {"type": "numerical", "min": 1.0, "max": 4320.0, "default": 1082.159},
+    'Adsorption Time(min)': {"type": "numerical", "min": 1.0, "max": 9600.0, "default": 1082.159},
 }
 feature_names = list(feature_ranges.keys())
 
