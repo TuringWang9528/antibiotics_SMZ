@@ -51,17 +51,17 @@ model = load_model()
 
 # 根据上传的 describe 数据更新特征范围
 feature_ranges = {
-    'SBET (m²/g)': {"type": "numerical", "min": 2.29, "max": 1666.0, "default": 347.97},
-    'Vtotal (m³/g)': {"type": "numerical", "min": 0.004, "max": 1.992, "default": 0.337},
-    'Dp (nm)': {"type": "numerical", "min": 1.67, "max": 39.005, "default": 8.203},
+    'SSA (m²/g)': {"type": "numerical", "min": 2.29, "max": 1666.0, "default": 347.97},
+    'TPV (m³/g)': {"type": "numerical", "min": 0.004, "max": 1.992, "default": 0.337},
+    'APS (nm)': {"type": "numerical", "min": 1.67, "max": 39.005, "default": 8.203},
     'C (%)': {"type": "numerical", "min": 6.02, "max": 90.1, "default": 62.471},
     'O (%)': {"type": "numerical", "min": 4.12, "max": 57.7, "default": 20.996},
     'H (%)': {"type": "numerical", "min": 0.01, "max": 18.77, "default": 2.7},
     'N (%)': {"type": "numerical", "min": 0.0, "max": 5.35, "default": 1.263},
     'Dosage (g/L)': {"type": "numerical", "min": 0.008, "max": 20.0, "default": 2.478},
-    'Initial concentration (mg/L)': {"type": "numerical", "min": 0.05, "max": 389.971, "default": 41.887},
+    'SMX concentration (mg/L)': {"type": "numerical", "min": 0.05, "max": 389.971, "default": 41.887},
     'Temperature (K)': {"type": "numerical", "min": 278.0, "max": 313.15, "default": 297.792},
-    'Initial pH': {"type": "numerical", "min": 3.0, "max": 8.26, "default": 6.006},
+    'Solution pH': {"type": "numerical", "min": 3.0, "max": 8.26, "default": 6.006},
     'Adsorption Time(min)': {"type": "numerical", "min": 1.0, "max": 4320.0, "default": 1082.159},
 }
 feature_names = list(feature_ranges.keys())
