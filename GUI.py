@@ -35,12 +35,16 @@ def load_model():
         return joblib.load('XGBoost.pkl')
     except FileNotFoundError:
         from sklearn.dummy import DummyRegressor
-        # 固定随机种子，保证每次 fallback 生成的 Dummy 模型完全一致
+        # 固定随机种子
         np.random.seed(42) 
         dummy = DummyRegressor(strategy="mean")
-        X_dummy = pd.DataFrame(np.random.rand(10, 13), columns=[
-            'SSA (m²/g)', 'TPV (m³/g)', 'APS (nm)', 'C (%)', 'O (%)', 'H (%)', 'N (%)', 'Dosage (g/L)', 'SMX concentration (mg/L)', 'Temperature (K)',
-            'Solution pH', 'Adsorption Time(min)'
+        
+        # 修复1: 维度改为 (10, 12)，对应 12 个特征
+        # 修复2: 顺序和名称必须与新数据集完全一致
+        X_dummy = pd.DataFrame(np.random.rand(10, 12), columns=[
+            'C (%)', 'H (%)', 'O (%)', 'N (%)', 'SSA (m²/g)', 'TPV (m³/g)', 
+            'APS (nm)', 'Dosage (g/L)', 'SMX concentration (mg/L)', 
+            'Temperature (K)', 'solution pH', 'Adsorption Time(min)'
         ])
         y_dummy = np.random.rand(10) * 100
         dummy.fit(X_dummy, y_dummy)
@@ -48,19 +52,19 @@ def load_model():
 
 model = load_model()
 
-# 根据上传的 describe 数据更新特征范围
+# 根据上传的 describe 数据更新特征范围，顺序必须与 XGBoost 训练时一致
 feature_ranges = {
+    'C (%)': {"type": "numerical", "min": 6.02, "max": 90.1, "default": 62.471},
+    'H (%)': {"type": "numerical", "min": 0.01, "max": 18.77, "default": 2.7},
+    'O (%)': {"type": "numerical", "min": 4.12, "max": 57.7, "default": 20.996},
+    'N (%)': {"type": "numerical", "min": 0.0, "max": 5.35, "default": 1.263},
     'SSA (m²/g)': {"type": "numerical", "min": 2.29, "max": 1666.0, "default": 347.97},
     'TPV (m³/g)': {"type": "numerical", "min": 0.004, "max": 1.992, "default": 0.337},
     'APS (nm)': {"type": "numerical", "min": 1.67, "max": 39.005, "default": 8.203},
-    'C (%)': {"type": "numerical", "min": 6.02, "max": 90.1, "default": 62.471},
-    'O (%)': {"type": "numerical", "min": 4.12, "max": 57.7, "default": 20.996},
-    'H (%)': {"type": "numerical", "min": 0.01, "max": 18.77, "default": 2.7},
-    'N (%)': {"type": "numerical", "min": 0.0, "max": 5.35, "default": 1.263},
     'Dosage (g/L)': {"type": "numerical", "min": 0.008, "max": 20.0, "default": 2.478},
     'SMX concentration (mg/L)': {"type": "numerical", "min": 0.05, "max": 389.971, "default": 41.887},
     'Temperature (K)': {"type": "numerical", "min": 278.0, "max": 313.15, "default": 297.792},
-    'Solution pH': {"type": "numerical", "min": 3.0, "max": 8.26, "default": 6.006},
+    'solution pH': {"type": "numerical", "min": 3.0, "max": 8.26, "default": 6.006},
     'Adsorption Time(min)': {"type": "numerical", "min": 1.0, "max": 9600.0, "default": 1082.159},
 }
 feature_names = list(feature_ranges.keys())
