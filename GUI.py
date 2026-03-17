@@ -39,9 +39,8 @@ def load_model():
         np.random.seed(42) 
         dummy = DummyRegressor(strategy="mean")
         X_dummy = pd.DataFrame(np.random.rand(10, 13), columns=[
-            'SBET (m²/g)', 'Vtotal (m³/g)', 'Dp (nm)', 'C (%)', 'O (%)', 'H (%)', 'N (%)',
-            'pHpzc', 'Dosage (g/L)', 'Initial concentration (mg/L)', 'Temperature (K)',
-            'Initial pH', 'Adsorption Time(min)'
+            'SSA (m²/g)', 'TPV (m³/g)', 'APS (nm)', 'C (%)', 'O (%)', 'H (%)', 'N (%)', 'Dosage (g/L)', 'SMX concentration (mg/L)', 'Temperature (K)',
+            'Solution pH', 'Adsorption Time(min)'
         ])
         y_dummy = np.random.rand(10) * 100
         dummy.fit(X_dummy, y_dummy)
