@@ -146,6 +146,7 @@ if model:
             with col_res1:
                 st.info("Predicted Adsorption Capacity")
                 st.metric(label="Qe (mg/g)", value=f"{res['pred']:.4f}", delta="Model Output")
+                base = np.asarray(res["base"]).item()
                 st.write("Base Value (Average):", f"{base:.4f}")
 
             with col_res2:
