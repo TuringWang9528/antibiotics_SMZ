@@ -146,7 +146,7 @@ if model:
             with col_res1:
                 st.info("Predicted Adsorption Capacity")
                 st.metric(label="Qe (mg/g)", value=f"{res['pred']:.4f}", delta="Model Output")
-                st.write("Base Value (Average):", f"{res['base']:.4f}")
+                st.write("Base Value (Average):", f"{base:.4f}")
 
             with col_res2:
                 # 仪表盘
