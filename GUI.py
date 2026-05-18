@@ -10,8 +10,8 @@ import io
 
 # ---------------------- 1. 基础配置 ----------------------
 st.set_page_config(page_title="Biochar Adsorption Predictor", layout="wide")
-plt.rcParams["font.family"] = ["Times New Roman", "SimHei"]
-plt.rcParams['axes.unicode_minus'] = False
+# plt.rcParams["font.family"] = ["Times New Roman", "SimHei"]
+# plt.rcParams['axes.unicode_minus'] = False
 
 # ---------------------- 2. 自定义CSS ----------------------
 st.markdown("""
