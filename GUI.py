@@ -32,7 +32,7 @@ div[class*="stText"], div[class*="stNumberInput"], div[class*="stSelectbox"] { t
 @st.cache_resource
 def load_model():
     try:
-        return joblib.load('XGBoost.pkl')
+        return joblib.load('XGBoost.joblib')
     except FileNotFoundError:
         from sklearn.dummy import DummyRegressor
         # 固定随机种子
