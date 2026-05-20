@@ -54,7 +54,7 @@ model = load_model()
 
 # 根据上传的 describe 数据更新特征范围，顺序必须与 XGBoost 训练时一致
 feature_ranges = {
-    'C (%)': {"type": "numerical", "min": 6.02, "max": 90.1, "default": 62.471},
+    'C (%)': {"type": "numerical", "min": 6.02, "max": 92.1, "default": 62.471},
     'H (%)': {"type": "numerical", "min": 0.01, "max": 18.77, "default": 2.7},
     'O (%)': {"type": "numerical", "min": 4.12, "max": 57.7, "default": 20.996},
     'N (%)': {"type": "numerical", "min": 0.0, "max": 5.35, "default": 1.263},
